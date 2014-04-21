@@ -37,7 +37,7 @@ class NeumannFill {
     // if we find a free pixel push it to the stack
     for (int i = 0; i < 4; i++) {
       int[] nb = nbs[i];
-      if ( get(nb) == fg_color ) {
+      if ( get(nb) == fg_color) {
         trace.push(nb);
         return TRUE;
       }
