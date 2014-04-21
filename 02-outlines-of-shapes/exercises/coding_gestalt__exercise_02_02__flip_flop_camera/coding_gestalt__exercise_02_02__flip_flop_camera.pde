@@ -17,7 +17,7 @@
 //                                               //
 ///////////////////////////////////////////////////
 
-// (c) Andre Faupel at Bauhaus-Uni Weimar
+// (c) YOUR_NAME at Bauhaus-Uni Weimar
 
 
 import processing.video.Capture;
