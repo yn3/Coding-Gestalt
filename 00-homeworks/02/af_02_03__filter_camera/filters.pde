@@ -1,4 +1,3 @@
-
 // These are just dummy functions. 
 // Please implement them.
 
@@ -52,7 +51,7 @@ PImage erode(PImage img, int steps) {
     for(int x = steps; x < w - steps; x++) {
      
       
-   
+      //filter(ERODE); ?
       target.pixels[y * w + x ] = img.pixels[y * w - steps];
       target.pixels[y * h + x ] = img.pixels[y * h - steps];
     }
