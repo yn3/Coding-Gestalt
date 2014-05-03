@@ -6,7 +6,7 @@
 //                                               //
 ///////////////////////////////////////////////////
 
-// (c) Andre Faupel at Bauhaus-Uni Weimar ( 2014 )
+// (c) YOUR_NAME at Bauhaus-Uni Weimar ( 2014 )
 
 PFont arial;
 
