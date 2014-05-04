@@ -48,10 +48,23 @@ class Grassfire{
  
    float northwest(int index){
      float b,c,d,e,min;
+     
+       //northwest_alg:
+       /*
        b=out.pixels[index-w];
        c=out.pixels[index+1];
        d=out.pixels[index+1+w];
        e=out.pixels[index-w+1];
+       */
+       //Neumann_alg:
+     
+     
+       b=out.pixels[index+w];
+       c=out.pixels[index-1];
+       d=out.pixels[index-w];
+       e=out.pixels[index+1]; 
+     
+     
        min=min(b,c);
        min=min(min,d,e);
     return min; 
@@ -61,10 +74,21 @@ class Grassfire{
    
    float southeast(int index){
      float b,c,d,e,min;
+     
+       //southeast_alg
+       /*
        b=out.pixels[index+w];
        c=out.pixels[index-1];
        d=out.pixels[index-w-1];
        e=out.pixels[index+w-1];
+       */
+       //Neumann_alg
+
+       b=out.pixels[index+w];
+       c=out.pixels[index-1];
+       d=out.pixels[index-w];
+       e=out.pixels[index+1];  
+     
        min=min(b,c);
        min=min(min,d,e);
     return min; 

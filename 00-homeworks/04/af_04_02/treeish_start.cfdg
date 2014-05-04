@@ -1,0 +1,25 @@
+startshape START
+
+
+
+rule START {
+
+A { x -1 s 2.2  }
+}
+
+rule A {
+
+SQUARE { s 0.4  sat 2 hue 1.2 r -12}
+A { y 0.78 size 0.79  r 3 }
+A { y -0.28 size 0.19 x 0.2 r 4 }
+A { y 0.38 size 0.69   r 5 }
+}
+
+rule A {
+
+//CRUCIAL ITERATION 
+A {flip 90 s 1.09 }
+//A {flip 90 s 1.11 }
+}
+
+
