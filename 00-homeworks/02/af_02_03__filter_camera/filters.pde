@@ -21,50 +21,101 @@ PImage threshold(PImage img, int threshold) {
   return Filter.end();
 }
 
-PImage dilate(PImage img, int steps) {
-  int w = img.width;
-  int h = img.height;
-  PImage target = createImage(w, h, RGB);
-  img.loadPixels();
-  for(int y = 0; y < h; y++) {
-    for(int x = 0; x < w; x++) {
-     
-      
-   
-      target.pixels[y * w + x ] = img.pixels[y * w + steps];
-      target.pixels[y * h + x ] = img.pixels[y * h + steps];
-    }
+PImage dilate(PImage in, int steps) {
+
+  PImage out = in.get();
+   int w = out.width;
+  int h = out.height;
     
+  for(int i = 0; i<steps;i++){
+    Filter.begin(out);
+    
+    for(int c = 0; c < Filter.source.length; c++) {
+      int x = c%w;
+      int y = c/w;
+      int xmin=max(0,x-1);
+      int xmax=min(w-1,x+1);
+      int ymin=max(0,y-1);
+      int ymax=min(h-1,y+1);
+      float maxi=0;
+      
+      for(int yy=ymin;yy<ymax;yy++){
+         for(int xx=xmin;xx<xmax;xx++){
+          maxi=max(maxi,brightness(Filter.source[yy*w+xx]));
+           
+         }
+       
+        
+      }
+       Filter.target[c]=color(maxi); 
+
+    }
+      out=Filter.end();
   }
 
-  target.updatePixels();
-  return target;
  
+  return out;
 }
 
-PImage erode(PImage img, int steps) {
-   int w = img.width;
-  int h = img.height;
-  PImage target = createImage(w, h, RGB);
-  img.loadPixels();
-  for(int y = steps; y < h - steps; y++) {
-    for(int x = steps; x < w - steps; x++) {
-     
-      
-      //filter(ERODE); ?
-      target.pixels[y * w + x ] = img.pixels[y * w - steps];
-      target.pixels[y * h + x ] = img.pixels[y * h - steps];
-    }
+
+
+
+
+
+
+
+PImage erode(PImage in, int steps) {
+
+  PImage out = in.get();
+   int w = out.width;
+  int h = out.height;
     
+  for(int i = 0; i<steps;i++){
+    Filter.begin(out);
+    
+    for(int c = 0; c < Filter.source.length; c++) {
+      int x = c%w;
+      int y = c/w;
+      int xmin=max(0,x-1);
+      int xmax=min(w-1,x+1);
+      int ymin=max(0,y-1);
+      int ymax=min(h-1,y+1);
+      float mini=255;
+      
+      for(int yy=ymin;yy<ymax;yy++){
+         for(int xx=xmin;xx<xmax;xx++){
+          mini=min(mini,brightness(Filter.source[yy*w+xx]));
+           
+         }
+       
+        
+      }
+       Filter.target[c]=color(mini); 
+
+    }
+      out=Filter.end();
   }
 
-  target.updatePixels();
-  return target;
+ 
+  return out;
 }
 
 
 
-
+int[]neighbs(int x, int y, int steps){
+    int[][]nbs = new int[4][];
+    int[] nb = {x,y};
+    nbs[0] = new int[] { x - steps, y };
+    nbs[1] = new int[] { x, y - steps };
+    nbs[2] = new int[] { x + steps, y };
+    nbs[3] = new int[] { x, y + steps }; 
+  for (int i = 0; i<4;i++){
+  nb = nbs[i]; 
+   
+  }
+   return nb;
+  
+}
 
 
 

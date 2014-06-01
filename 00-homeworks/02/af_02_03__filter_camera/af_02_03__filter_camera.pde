@@ -45,6 +45,8 @@ void setup() {
   cam = new Capture(this, w, h);
   cam.start();
   
+
+  
   // adjust display for zoom
   setupDisplay();
   
